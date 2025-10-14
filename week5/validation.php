@@ -7,7 +7,7 @@ $con=mysqli_connect('localhost','root', '123456', 'LoginReg', '3306');
 
 /* create variables to store data */
 $name =$_POST['user'];
-$pass =$_POST['password'];
+$pass =md5($_POST['password']);
 
 /* select data from DB */
 $s="select * from userReg where name='$name'&& password='$pass'";

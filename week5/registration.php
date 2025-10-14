@@ -7,7 +7,7 @@ mysqli_select_db($con,'LoginReg');
 
 /* create variables to store data */
 $name =$_POST['user'];
-$pass =$_POST['password'];
+$pass =md5($_POST['password']);
 $studentID = $_POST['studentID']; 
 $DoB = $_POST['DoB'];
 $country = $_POST['country'];
