@@ -10,11 +10,10 @@ if (!$con) {
 }
 
 /* create variables to store data */
-$user = mysqli_real_escape_string($con, $_POST['user']); // Đổi tên biến $name thành $user cho rõ ràng, và dùng mysqli_real_escape_string
+$user = mysqli_real_escape_string($con, $_POST['user']); 
 $pass = md5($_POST['password']);
 
 /* select data from DB */
-// Lỗi ở đây: Thay 'name' bằng 'username', đồng thời sửa toán tử && thành AND trong SQL.
 $s = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
 
 /* result variable to store data */

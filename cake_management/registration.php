@@ -10,11 +10,10 @@ if (!$con) {
 }
 
 /* create variables to store data */
-$user = mysqli_real_escape_string($con, $_POST['user']); // Đổi tên biến $name thành $user cho rõ ràng, và dùng mysqli_real_escape_string để ngăn SQL Injection cơ bản
+$user = mysqli_real_escape_string($con, $_POST['user']); 
 $pass = md5($_POST['password']);
 
 /* select data from DB */
-// Lỗi ở đây: Thay 'name' bằng 'username'
 $s="select * from users where username='$user'"; 
 
 /* result variable to store data */
@@ -27,7 +26,6 @@ if ($num == 1) {
     // Đăng kí thất bại
     echo "Username Exists";
 } else {
-    // Lỗi ở đây: Thay 'name' bằng 'username'
     $reg = "INSERT INTO users(username, password) 
            VALUES ('$user', '$pass')";
     
@@ -35,8 +33,7 @@ if ($num == 1) {
         // Đăng kí thành công
         echo "Registration successful";
         $_SESSION['username'] = $user;
-        header("location:home.php"); // Sau khi đăng ký thành công, thường chuyển đến trang chủ (home.php)
-        exit();
+        header("location:home.php"); 
     } else {
         echo "Error: " . $reg . "<br>" . mysqli_error($con);
     }
